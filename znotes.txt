@@ -1,2 +1,4 @@
 env-cmd package from npm
 
+npm install dotenv --save
+
