@@ -6,7 +6,7 @@ git rm --cached .env
 
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer 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" \
+  -H "Authorization: Bearer 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" \
   -d '{
      "model": "gpt-3.5-turbo",
      "messages": [{"role": "user", "content": "Say this is a test!"}],
