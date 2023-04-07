@@ -3,7 +3,7 @@ import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 
-
+// require('dotenv').config();
 
 
 // "Explain things like you would to a 10 year old learning how to code."
@@ -21,8 +21,8 @@ function App() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
-  require('dotenv').config();
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  //require('dotenv').config();
+  const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
   const handleSend = async (message) => {
     const newMessage = {
@@ -62,10 +62,11 @@ function App() {
     // determine how we want chatGPT to act. 
     const apiRequestBody = {
       "model": "gpt-3.5-turbo",
-      "messages": [
-        systemMessage,  // The system message DEFINES the logic of our chatGPT
-        ...apiMessages // The messages from our chat with ChatGPT
-      ]
+      "messages": [{"role": "user", "content": "Say this is a test!"}
+        //systemMessage,  // The system message DEFINES the logic of our chatGPT
+       // ...apiMessages // The messages from our chat with ChatGPT
+      ],
+      "temperature": 0.7
     }
 
     await fetch("https://api.openai.com/v1/chat/completions", 
